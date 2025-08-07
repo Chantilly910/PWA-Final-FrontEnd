@@ -1,0 +1,123 @@
+[
+  {
+    "id": 1,
+    "nombre": "Doble Furia BBQ",
+    "tipo": "hamburguesa",
+    "precio": 1200
+  },
+  {
+    "id": 2,
+    "nombre": "Clásica FoodExpress",
+    "tipo": "hamburguesa",
+    "precio": 1000
+  },
+  {
+    "id": 3,
+    "nombre": "Smash Picante",
+    "tipo": "hamburguesa",
+    "precio": 1100
+  },
+  {
+    "id": 4,
+    "nombre": "Veggie Deluxe",
+    "tipo": "hamburguesa",
+    "precio": 950
+  },
+  {
+    "id": 5,
+    "nombre": "Bacon Supreme",
+    "tipo": "hamburguesa",
+    "precio": 1150
+  },
+  {
+    "id": 6,
+    "nombre": "Papas Rústicas con Cheddar",
+    "tipo": "papas",
+    "precio": 700
+  },
+  {
+    "id": 7,
+    "nombre": "Papas FoodExpress con Panceta",
+    "tipo": "papas",
+    "precio": 750
+  },
+  {
+    "id": 8,
+    "nombre": "Papas Fritas Clásicas",
+    "tipo": "papas",
+    "precio": 600
+  },
+  {
+    "id": 9,
+    "nombre": "Papas Cajún",
+    "tipo": "papas",
+    "precio": 650
+  },
+  {
+    "id": 10,
+    "nombre": "Papas con Salsa de Ajo",
+    "tipo": "papas",
+    "precio": 680
+  },
+  {
+    "id": 11,
+    "nombre": "ChocoVolcán",
+    "tipo": "postre",
+    "precio": 800
+  },
+  {
+    "id": 12,
+    "nombre": "Cheesecake de Frutilla",
+    "tipo": "postre",
+    "precio": 850
+  },
+  {
+    "id": 13,
+    "nombre": "Brownie FoodExpress",
+    "tipo": "postre",
+    "precio": 750
+  },
+  {
+    "id": 14,
+    "nombre": "Helado de Vainilla con Oreo",
+    "tipo": "postre",
+    "precio": 700
+  },
+  {
+    "id": 15,
+    "nombre": "Tarta de Limón",
+    "tipo": "postre",
+    "precio": 780
+  },
+  {
+    "id": 16,
+    "nombre": "Refresco FoodExpress Cola",
+    "tipo": "bebida",
+    "precio": 500
+  },
+  {
+    "id": 17,
+    "nombre": "Limonada con Menta",
+    "tipo": "bebida",
+    "precio": 550
+  },
+  {
+    "id": 18,
+    "nombre": "Agua Mineral",
+    "tipo": "bebida",
+    "precio": 400
+  },
+  {
+    "id": 19,
+    "nombre": "Batido de Frutilla",
+    "tipo": "bebida",
+    "precio": 600
+  },
+  {
+    "id": 20,
+    "nombre": "Cerveza Artesanal",
+    "tipo": "bebida",
+    "precio": 650
+  }
+
+]
