@@ -8,14 +8,22 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const auth = useAuth();
 
   const handleLogin = useCallback(async () => {
     if (!isLoggingIn) {
       setIsLoggingIn(true);
-      await signIn(email, password);
+      try {
+        await signIn(email, password);
+      } catch (err: any) {
+        setError("Error al iniciar sesión. Verificá tus datos.");
+        console.error(err);
+      } finally {
+        setIsLoggingIn(false);
+      }
     }
-  }, [password, email, isLoggingIn]);
+  }, [email, password, isLoggingIn]);
 
   if (auth?.userLoggedIn) return <Navigate to="/" />;
 
@@ -24,17 +32,22 @@ export const Login = () => {
       <h1>Login</h1>
       <input
         className={styles.textInput}
-        onBlur={(e) => setEmail(e.target.value)}
-        placeholder="email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
       />
       <input
         className={styles.textInput}
-        onBlur={(e) => setPassword(e.target.value)}
-        placeholder="username"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
       />
       <button onClick={handleLogin}>Login</button>
+      {error && <p className={styles.error}>{error}</p>}
       <div>
-        Don't have a user? <Link to="/register">Register</Link>
+        ¿No tenés usuario? <Link to="/register">Registrate</Link>
       </div>
     </div>
   );

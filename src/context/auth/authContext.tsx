@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
 
 interface UserData {
-  name: string;
+  name?: string;
   email: string;
 }
 
@@ -25,11 +25,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, initializeUser);
     return unsubscribe;
-  });
+  }, []); // ← importante: solo se ejecuta una vez
 
   const initializeUser = async (user: any) => {
     if (user) {
-      setCurrentUser(user);
+      setCurrentUser({ email: user.email });
       setUserLoggedIn(true);
     } else {
       setCurrentUser(null);

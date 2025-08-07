@@ -1,42 +1,55 @@
-import { useCallback, useState } from "react";
-import styles from "../register/Register.module.css";
+import { useCallback, useState, useEffect } from "react";
+import styles from "./Register.module.css";
 import { createUser } from "../../../firebase/auth";
-import { Link, Navigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/auth/authContext";
 
 export const Register = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [isRegistering, setIsRegistering] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const auth = useAuth();
-
-  console.log(auth);
+  const navigate = useNavigate();
 
   const handleRegister = useCallback(async () => {
-    if (!isRegistering) {
-      setIsRegistering(true);
+    try {
       await createUser(email, password);
+    } catch (err: any) {
+      if (err.code === "auth/email-already-in-use") {
+        setError("Este correo ya está registrado. Probá iniciar sesión.");
+      } else {
+        setError("Error al registrarse. Verificá los datos.");
+      }
     }
-  }, [isRegistering, email, password]);
+  }, [email, password]);
 
-  if (auth?.userLoggedIn) return <Navigate to="/" />;
+  useEffect(() => {
+    if (auth?.userLoggedIn) {
+      navigate("/");
+    }
+  }, [auth?.userLoggedIn, navigate]);
 
   return (
     <div className={styles.container}>
-      <h1>Register</h1>
+      <h1>Registrarse</h1>
       <input
         className={styles.textInput}
-        onBlur={(e) => setEmail(e.target.value)}
-        placeholder="email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
       />
       <input
         className={styles.textInput}
-        onBlur={(e) => setPassword(e.target.value)}
-        placeholder="username"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Contraseña"
       />
-      <button onClick={handleRegister}>Register</button>
+      <button onClick={handleRegister}>Registrarse</button>
+      {error && <p className={styles.error}>{error}</p>}
       <div>
-        Already have a user? <Link to="/login">Login</Link>
+        ¿Ya tenés cuenta? <Link to="/login">Iniciar sesión</Link>
       </div>
     </div>
   );
