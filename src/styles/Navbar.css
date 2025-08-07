@@ -1,1 +1,27 @@
-.navbar { background: red; padding: 1em; color: white; display: flex; justify-content: space-between; }
+/* src/styles/Navbar.css */
+.navbar {
+  background-color: #e31837;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar .logo {
+  color: white;
+  font-size: 1.5rem;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+main {
+  padding: 1rem;
+  background-color: #f7f7f7;
+  min-height: calc(100vh - 64px);
+}

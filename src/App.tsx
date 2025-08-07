@@ -1,18 +1,22 @@
-import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import FoodList from './components/FoodList';
-import Cart from './components/Cart';
+import Home from './components/Home';
+import FoodList from '../src/components/foodlist';
+import Cart from '../src/components/Cart';
+import AuthForm from './components/AuthForm';
 
-function App() {
-  const [cart, setCart] = useState([]);
-
+export default function App() {
   return (
-    <div>
+    <>
       <Navbar />
-      <FoodList cart={cart} setCart={setCart} />
-      <Cart cart={cart} />
-    </div>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<AuthForm />} />
+          <Route path="/category/:categoria" element={<FoodList />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </main>
+    </>
   );
 }
-
-export default App;
