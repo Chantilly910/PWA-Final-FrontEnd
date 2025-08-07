@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
+import React from 'react';
 import '../styles/Home.css';
+import { useAuth } from '../context/auth/authContext';
+import { Link } from 'react-router-dom';
 
 interface Food {
   name: string;
@@ -37,27 +38,23 @@ const sampleFoods: Food[] = [
 ];
 
 const Home: React.FC = () => {
-  const [cart, setCart] = useState<Food[]>([]);
-
-  const addToCart = (food: Food) => {
-    setCart([...cart, food]);
-    console.log('Agregado al carrito:', food);
-  };
+  const auth = useAuth();
 
   return (
-    <div>
-      <Navbar />
-      <h2 className="section-title">Menú del día</h2>
-      <div className="food-grid">
-        {sampleFoods.map((food, index) => (
-          <div key={index} className="food-card">
-            <img src={food.image} alt={food.name} className="food-image" />
-            <h3>{food.name}</h3>
-            <p>${food.price.toFixed(2)}</p>
-            <button onClick={() => addToCart(food)}>Agregar al carrito</button>
-          </div>
-        ))}
-      </div>
+    <div className="home-bg">
+      {!auth?.userLoggedIn ? (
+        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <h2>Bienvenido a FoodExpress</h2>
+          <p>Por favor, inicia sesión o regístrate para ver el menú y hacer pedidos.</p>
+          <Link to="/login" style={{ marginRight: '1rem' }}>Iniciar sesión</Link>
+          <Link to="/register">Registrarse</Link>
+        </div>
+      ) : (
+        <>
+          <h2 className="section-title">Menú del día</h2>
+          <p style={{ textAlign: 'center' }}>Selecciona una categoría en la barra de navegación para ver los productos.</p>
+        </>
+      )}
     </div>
   );
 };

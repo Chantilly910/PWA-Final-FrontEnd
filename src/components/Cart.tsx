@@ -1,26 +1,9 @@
-import React, { useState } from 'react';
-import './Cart.css';
+import React from 'react';
+import '../styles/Cart.css';
+import { useCart } from '../context/cartContext';
 
-interface Food {
-  name: string;
-  price: number;
-  category: string;
-  image: string;
-}
-
-interface CartProps {
-  initialItems: Food[];
-}
-
-const Cart: React.FC<CartProps> = ({ initialItems }) => {
-  const [cartItems, setCartItems] = useState<Food[]>(initialItems);
-
-  const removeFromCart = (index: number) => {
-    const updatedCart = [...cartItems];
-    updatedCart.splice(index, 1);
-    setCartItems(updatedCart);
-  };
-
+const Cart: React.FC = () => {
+  const { cartItems, removeFromCart, clearCart } = useCart();
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
 
   return (
@@ -43,6 +26,7 @@ const Cart: React.FC<CartProps> = ({ initialItems }) => {
           <div className="cart-total">
             <strong>Total: ${totalPrice.toFixed(2)}</strong>
           </div>
+          <button onClick={clearCart} className="clear-cart-btn">Vaciar carrito</button>
         </div>
       )}
     </div>

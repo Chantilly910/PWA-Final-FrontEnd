@@ -1,31 +1,35 @@
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import FoodList from '../src/components/FoodList';
-import Cart from './components/Cart';
-import AuthForm from './components/AuthForm';
-import Hamburguesas from './pages/Hamburguesas';
-import Papas from './pages/Papas';
-import Postres from './pages/Postres';
-import Bebidas from './pages/Bebidas';
-import PrivateRoute from '../src/components/PrivateRoute';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useAuth } from "./context/auth/authContext";
+import { Login } from "./components/auth/login/Login";
+import { Register } from "./components/auth/register/Register";
+import Profile from "../src/pages/Profile";
+import PrivateRoute from "../src/components/PrivateRoute";
+import Cart from "./components/Cart";
+import FoodList from "./components/FoodList";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import { Navigate } from "react-router-dom";
 
-export default function App() {
+const App: React.FC = () => {
+  const auth = useAuth();
+
+
+
   return (
     <>
       <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<AuthForm />} />
-          <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
-          <Route path="/category/hamburguesas" element={<PrivateRoute><Hamburguesas /></PrivateRoute>} />
-          <Route path="/category/papas" element={<PrivateRoute><Papas /></PrivateRoute>} />
-          <Route path="/category/postres" element={<PrivateRoute><Postres /></PrivateRoute>} />
-          <Route path="/category/bebidas" element={<PrivateRoute><Bebidas /></PrivateRoute>} />
-          <Route path="/category/:categoria" element={<PrivateRoute><FoodList /></PrivateRoute>} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path="/category/:category" element={<PrivateRoute><FoodList /></PrivateRoute>} />
+      </Routes>
     </>
   );
-}
+};
+
+export default App;
+

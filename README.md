@@ -1,69 +1,77 @@
-# React + TypeScript + Vite
+# FoodExpress - PWA de Pedidos de Comida
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FoodExpress es una aplicación web progresiva (PWA) desarrollada con React, TypeScript y Vite. Permite a los usuarios registrarse, iniciar sesión, explorar un menú de comidas, agregar productos al carrito y gestionar su perfil de manera profesional y segura.
 
-Currently, two official plugins are available:
+## Características principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Autenticación segura (registro, login, logout)
+- Navegación protegida por sesión
+- Visualización de menú por categorías
+- Carrito de compras global y persistente
+- Diseño profesional, responsivo y moderno
+- Experiencia de usuario clara y fluida
 
-## Expanding the ESLint configuration
+## Estructura del proyecto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `/src/components` - Componentes reutilizables (Navbar, FoodList, Cart, etc.)
+- `/src/pages` - Vistas principales (Home, Login, Register, Profile, etc.)
+- `/src/context` - Contextos globales (auth, cart)
+- `/src/styles` - Archivos CSS y módulos de estilos
+- `/src/firebase` - Configuración y lógica de autenticación Firebase
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalación y ejecución
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. Clona el repositorio:
+   ```bash
+   git clone <url-del-repo>
+   cd final-PWA-F
+   ```
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+3. Instala dependencias adicionales necesarias:
+   ```bash
+   npm install react-icons axios
+   ```
+4. Inicia la aplicación en modo desarrollo:
+   ```bash
+   npm run dev
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Dependencias principales
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- react
+- react-dom
+- react-router-dom
+- react-icons
+- axios
+- vite
+- typescript
+- firebase
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Dependencias de desarrollo
+
+- @vitejs/plugin-react
+- @types/react
+- @types/react-dom
+- @types/node
+
+
+## Scripts útiles
+
+- `npm run dev` - Inicia el servidor de desarrollo
+
+## Notas
+
+- Asegúrate de tener configurado correctamente Firebase en `/src/firebase/`.
+- Si usas Windows y tienes problemas con la instalación de paquetes, ejecuta PowerShell como administrador y usa:
+  ```powershell
+  Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+  ```
+
+---
+
+**Hecho por Pablo Cejas**
 ```

@@ -1,3 +1,14 @@
+body, #root {
+  min-height: 100vh;
+  background: #ffe066 !important;
+  width: 100%;
+}
+/* Fondo amarillo para la homepage */
+.home-bg {
+  min-height: 100vh;
+  background: #ffe066;
+  width: 100%;
+}
 .section-title {
   text-align: center;
   margin: 2rem 0;
